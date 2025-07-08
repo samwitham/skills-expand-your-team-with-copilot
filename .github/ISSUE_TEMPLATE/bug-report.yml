@@ -1,0 +1,157 @@
+name: 🐛 Bug Report
+description: Report a problem with the High School Activities Management System
+title: "[BUG] "
+labels: ["bug", "teacher-report"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report a bug! Please describe the issue in detail so we can fix it quickly.
+        
+  - type: textarea
+    id: bug-description
+    attributes:
+      label: Bug Description
+      description: What is the problem? Describe what's happening that shouldn't be happening.
+      placeholder: A clear and concise description of what the bug is
+    validations:
+      required: true
+      
+  - type: textarea
+    id: steps-to-reproduce
+    attributes:
+      label: Steps to Reproduce
+      description: How can we recreate this bug? Please be specific.
+      placeholder: |
+        1. Go to '...'
+        2. Click on '...'
+        3. Enter '...'
+        4. See error
+    validations:
+      required: true
+      
+  - type: textarea
+    id: expected-behavior
+    attributes:
+      label: Expected Behavior
+      description: What should have happened instead?
+      placeholder: A clear and concise description of what you expected to happen
+    validations:
+      required: true
+      
+  - type: textarea
+    id: actual-behavior
+    attributes:
+      label: Actual Behavior
+      description: What actually happened?
+      placeholder: What actually happened instead of the expected behavior
+    validations:
+      required: true
+      
+  - type: dropdown
+    id: affected-area
+    attributes:
+      label: Which part of the system is affected?
+      description: Select the area where the bug occurs
+      options:
+        - Student activity signup
+        - Teacher login/authentication
+        - Activity registration/unregistration
+        - Activity filtering (by day, time, category)
+        - Activity display/listing
+        - Teacher account management
+        - Database/data loading
+        - User interface/design
+        - Other
+    validations:
+      required: true
+      
+  - type: dropdown
+    id: frequency
+    attributes:
+      label: How often does this happen?
+      description: Is this bug consistent or intermittent?
+      options:
+        - Always (100% of the time)
+        - Often (more than 50% of the time)
+        - Sometimes (less than 50% of the time)
+        - Rarely (only once or twice)
+        - Unknown
+    validations:
+      required: true
+      
+  - type: dropdown
+    id: browser
+    attributes:
+      label: Browser (if web interface issue)
+      description: Which browser are you using?
+      options:
+        - Chrome
+        - Firefox
+        - Safari
+        - Edge
+        - Other
+        - Not applicable (server/API issue)
+    validations:
+      required: false
+      
+  - type: input
+    id: teacher-account
+    attributes:
+      label: Teacher Account (if relevant)
+      description: Which teacher account were you using when this occurred?
+      placeholder: e.g., mrodriguez, mchen (or "student access" if not logged in)
+    validations:
+      required: false
+      
+  - type: textarea
+    id: error-messages
+    attributes:
+      label: Error Messages
+      description: Any error messages you saw? Please copy the exact text.
+      placeholder: Copy and paste any error messages here
+    validations:
+      required: false
+      
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional Context
+      description: Any other information that might help us fix this bug?
+      placeholder: Screenshots, specific activities affected, timing when it started, etc.
+    validations:
+      required: false
+      
+  - type: markdown
+    attributes:
+      value: |
+        ## Implementation Details for Developer
+        
+        **Investigation Areas:**
+        - Check relevant API endpoints in `src/backend/routers/`
+        - Review error handling in affected components
+        - Verify database operations in `src/backend/database.py`
+        - Check frontend JavaScript in `src/static/app.js`
+        - Review authentication logic if login-related
+        
+        **Common Bug Locations:**
+        - **Authentication bugs:** Check `src/backend/routers/auth.py`
+        - **Activity management bugs:** Check `src/backend/routers/activities.py`
+        - **Database bugs:** Check `src/backend/database.py`
+        - **UI bugs:** Check `src/static/app.js` and `src/static/styles.css`
+        - **API response bugs:** Check FastAPI endpoint implementations
+        
+        **Testing Requirements:**
+        - Create a test case that reproduces the bug
+        - Verify the fix doesn't break other functionality
+        - Test edge cases related to the bug area
+        - Check both teacher and student user flows if applicable
+        
+        **Acceptance Criteria:**
+        - ✅ Bug no longer occurs when following reproduction steps
+        - ✅ Expected behavior now happens correctly
+        - ✅ No new bugs introduced by the fix
+        - ✅ All existing functionality still works
+        - ✅ Fix is robust and handles edge cases
+        - ✅ Appropriate error messages if applicable

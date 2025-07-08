@@ -1,0 +1,131 @@
+name: 🎯 Add New Activity
+description: Request a new extracurricular activity to be added to the system
+title: "[NEW ACTIVITY] Add [Activity Name]"
+labels: ["enhancement", "new-activity", "teacher-request"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for requesting a new activity! Please provide all the details below so we can implement this efficiently.
+        
+  - type: input
+    id: activity-name
+    attributes:
+      label: Activity Name
+      description: What is the name of the new activity?
+      placeholder: e.g., "Robotics Club", "Spanish Club", "Volleyball Team"
+    validations:
+      required: true
+      
+  - type: textarea
+    id: activity-description
+    attributes:
+      label: Activity Description
+      description: Provide a detailed description of what this activity involves
+      placeholder: Describe the purpose, goals, and what students will do in this activity
+    validations:
+      required: true
+      
+  - type: dropdown
+    id: activity-category
+    attributes:
+      label: Activity Category
+      description: What category does this activity belong to?
+      options:
+        - sports
+        - arts
+        - academic
+        - technology
+        - community
+        - other
+    validations:
+      required: true
+      
+  - type: input
+    id: max-participants
+    attributes:
+      label: Maximum Participants
+      description: What is the maximum number of students that can participate?
+      placeholder: e.g., 15, 20, 25
+    validations:
+      required: true
+      
+  - type: checkboxes
+    id: schedule-days
+    attributes:
+      label: Activity Days
+      description: Which days will this activity take place?
+      options:
+        - label: Monday
+        - label: Tuesday
+        - label: Wednesday
+        - label: Thursday
+        - label: Friday
+        - label: Saturday
+        - label: Sunday
+    validations:
+      required: true
+      
+  - type: input
+    id: start-time
+    attributes:
+      label: Start Time
+      description: When does the activity start? (24-hour format)
+      placeholder: e.g., 15:30 (for 3:30 PM), 07:00 (for 7:00 AM)
+    validations:
+      required: true
+      
+  - type: input
+    id: end-time
+    attributes:
+      label: End Time
+      description: When does the activity end? (24-hour format)
+      placeholder: e.g., 17:00 (for 5:00 PM), 08:30 (for 8:30 AM)
+    validations:
+      required: true
+      
+  - type: input
+    id: teacher-supervisor
+    attributes:
+      label: Supervising Teacher
+      description: Which teacher will supervise this activity?
+      placeholder: e.g., Ms. Rodriguez, Mr. Chen
+    validations:
+      required: true
+      
+  - type: textarea
+    id: special-requirements
+    attributes:
+      label: Special Requirements or Notes
+      description: Any special equipment, room requirements, or other important details?
+      placeholder: e.g., "Requires computer lab", "Needs outdoor space", "Equipment provided"
+    validations:
+      required: false
+      
+  - type: markdown
+    attributes:
+      value: |
+        ## Implementation Details for Developer
+        
+        **Database Changes Needed:**
+        - Add new activity to `initial_activities` dictionary in `src/backend/database.py`
+        - Activity object should include: description, schedule, schedule_details (days, start_time, end_time), max_participants, participants (empty array)
+        
+        **Files to Modify:**
+        - `src/backend/database.py` - Add activity to initial_activities
+        - Consider if any category filtering needs to be updated in frontend
+        
+        **Testing Requirements:**
+        - Verify activity appears in activities list
+        - Test activity signup/unregister functionality
+        - Verify schedule filtering works correctly
+        - Check capacity limits are enforced
+        
+        **Acceptance Criteria:**
+        - ✅ New activity appears on the main activities page
+        - ✅ Students can sign up for the activity
+        - ✅ Teachers can register/unregister students
+        - ✅ Activity respects maximum participant limit
+        - ✅ Schedule information displays correctly
+        - ✅ Activity can be filtered by day and time

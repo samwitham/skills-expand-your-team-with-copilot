@@ -1,0 +1,167 @@
+name: 🎨 UI/UX Improvement
+description: Request improvements to the user interface or user experience
+title: "[UI/UX] "
+labels: ["enhancement", "ui-ux", "teacher-request"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Suggest improvements to make the system more user-friendly, accessible, or visually appealing.
+        
+  - type: dropdown
+    id: improvement-area
+    attributes:
+      label: Which area needs improvement?
+      description: Select the primary area for UI/UX enhancement
+      options:
+        - Overall page layout and design
+        - Activity cards and display
+        - Filtering and search interface
+        - Login and authentication screens
+        - Registration modal/forms
+        - Teacher control interface
+        - Mobile/tablet responsiveness
+        - Color scheme and styling
+        - Navigation and menus
+        - Accessibility features
+        - Error messages and feedback
+        - Other
+    validations:
+      required: true
+      
+  - type: textarea
+    id: current-issue
+    attributes:
+      label: Current Issue/Problem
+      description: What's difficult, confusing, or frustrating about the current design?
+      placeholder: Describe what makes the current interface hard to use or less effective
+    validations:
+      required: true
+      
+  - type: textarea
+    id: proposed-improvement
+    attributes:
+      label: Proposed Improvement
+      description: What changes would make this better?
+      placeholder: Describe your vision for how this should look or work instead
+    validations:
+      required: true
+      
+  - type: dropdown
+    id: affected-users
+    attributes:
+      label: Who would benefit from this improvement?
+      description: Which users would this primarily help?
+      options:
+        - Students
+        - Teachers
+        - Both students and teachers
+        - Administrators
+        - All users
+    validations:
+      required: true
+      
+  - type: dropdown
+    id: device-focus
+    attributes:
+      label: Device/Platform Focus
+      description: Which devices is this improvement most important for?
+      options:
+        - Desktop computers
+        - Tablets
+        - Mobile phones
+        - All devices equally
+    validations:
+      required: true
+      
+  - type: checkboxes
+    id: improvement-type
+    attributes:
+      label: Type of Improvement
+      description: What aspects need to be improved? (Select all that apply)
+      options:
+        - label: Visual design/appearance
+        - label: Ease of use/usability
+        - label: Information organization
+        - label: Loading speed/performance
+        - label: Accessibility for users with disabilities
+        - label: Mobile/tablet experience
+        - label: Error handling and messages
+        - label: Navigation and flow
+    validations:
+      required: true
+      
+  - type: textarea
+    id: specific-examples
+    attributes:
+      label: Specific Examples
+      description: Can you provide specific examples of what needs improvement?
+      placeholder: |
+        Examples:
+        - "The activity cards are too small on mobile"
+        - "It's hard to find the login button"
+        - "Error messages are not clear"
+    validations:
+      required: false
+      
+  - type: textarea
+    id: success-criteria
+    attributes:
+      label: Success Criteria
+      description: How will we know this improvement is successful?
+      placeholder: What should users be able to do better/easier after this improvement?
+    validations:
+      required: true
+      
+  - type: textarea
+    id: inspiration
+    attributes:
+      label: Inspiration/References
+      description: Any examples from other websites or apps that demonstrate good design for this feature?
+      placeholder: Links to other sites, descriptions of good examples, etc.
+    validations:
+      required: false
+      
+  - type: markdown
+    attributes:
+      value: |
+        ## Implementation Details for Developer
+        
+        **Design Files to Consider:**
+        - **Main CSS:** `src/static/styles.css` - Primary styling
+        - **HTML Structure:** `src/static/index.html` - DOM elements and layout
+        - **JavaScript Behavior:** `src/static/app.js` - Interactive behaviors
+        - **Responsive Design:** Check CSS media queries for mobile/tablet
+        
+        **UI/UX Implementation Areas:**
+        - **Layout & Typography:** CSS Grid, Flexbox, font sizing, spacing
+        - **Color & Theming:** CSS custom properties (variables)
+        - **Interactive Elements:** Button states, hover effects, transitions
+        - **Form Design:** Input styling, validation feedback, accessibility
+        - **Responsive Design:** Media queries, flexible layouts
+        - **Accessibility:** ARIA labels, keyboard navigation, contrast ratios
+        
+        **Testing Requirements:**
+        - Test on multiple screen sizes (desktop, tablet, mobile)
+        - Verify accessibility with screen readers
+        - Check color contrast ratios
+        - Test keyboard navigation
+        - Validate with different browsers
+        - Get user feedback on changes
+        
+        **Performance Considerations:**
+        - Optimize CSS for faster loading
+        - Minimize layout shifts
+        - Ensure smooth animations
+        - Test loading times
+        
+        **Acceptance Criteria:**
+        - ✅ Improvement addresses the stated problem
+        - ✅ Design is consistent with overall system aesthetics
+        - ✅ Changes work well on all target devices
+        - ✅ Accessibility standards are maintained or improved
+        - ✅ No negative impact on system performance
+        - ✅ User experience is demonstrably better
+        - ✅ Changes are intuitive and don't require learning
+        - ✅ Design scales well for different content amounts

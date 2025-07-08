@@ -1,0 +1,158 @@
+name: 🚀 Feature Request
+description: Suggest a new feature or enhancement for the activities management system
+title: "[FEATURE] "
+labels: ["enhancement", "feature-request", "teacher-request"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for suggesting a new feature! Please provide as much detail as possible to help us understand and implement your idea.
+        
+  - type: textarea
+    id: feature-summary
+    attributes:
+      label: Feature Summary
+      description: What feature would you like to see added?
+      placeholder: A clear and concise description of the feature you'd like to see
+    validations:
+      required: true
+      
+  - type: textarea
+    id: problem-statement
+    attributes:
+      label: Problem Statement
+      description: What problem does this feature solve? What's the current limitation?
+      placeholder: Describe the current limitation or problem this feature would address
+    validations:
+      required: true
+      
+  - type: textarea
+    id: proposed-solution
+    attributes:
+      label: Proposed Solution
+      description: How do you envision this feature working?
+      placeholder: Describe how this feature should work from a user's perspective
+    validations:
+      required: true
+      
+  - type: dropdown
+    id: feature-area
+    attributes:
+      label: Which area of the system should this feature be added to?
+      description: Select the primary area this feature affects
+      options:
+        - Student activity management
+        - Teacher dashboard/controls
+        - Activity filtering and search
+        - User authentication and accounts
+        - Data export/reporting
+        - Notifications and alerts
+        - User interface improvements
+        - Mobile/responsive design
+        - Integration with external systems
+        - Other
+    validations:
+      required: true
+      
+  - type: dropdown
+    id: user-type
+    attributes:
+      label: Who would primarily use this feature?
+      description: Select the main users of this feature
+      options:
+        - Students
+        - Teachers
+        - Administrators
+        - Both students and teachers
+        - All users
+    validations:
+      required: true
+      
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority Level
+      description: How important is this feature?
+      options:
+        - High (blocking daily work)
+        - Medium (would significantly improve workflow)
+        - Low (nice to have)
+    validations:
+      required: true
+      
+  - type: textarea
+    id: use-cases
+    attributes:
+      label: Use Cases
+      description: Describe specific scenarios where this feature would be used
+      placeholder: |
+        Example scenarios:
+        1. When a teacher needs to...
+        2. When a student wants to...
+        3. During activity registration period...
+    validations:
+      required: true
+      
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternative Solutions
+      description: Are there any workarounds or alternative approaches you've considered?
+      placeholder: Describe any current workarounds or alternative solutions you've considered
+    validations:
+      required: false
+      
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional Context
+      description: Any other information that would help us understand this feature request?
+      placeholder: Screenshots, mockups, examples from other systems, etc.
+    validations:
+      required: false
+      
+  - type: markdown
+    attributes:
+      value: |
+        ## Implementation Details for Developer
+        
+        **Analysis Required:**
+        - Evaluate impact on existing system architecture
+        - Determine required database changes
+        - Assess frontend/backend changes needed
+        - Consider authentication/authorization requirements
+        - Evaluate performance implications
+        
+        **Key Files to Consider:**
+        - **Backend API:** `src/backend/routers/activities.py`, `src/backend/routers/auth.py`
+        - **Database:** `src/backend/database.py`
+        - **Frontend:** `src/static/app.js`, `src/static/index.html`
+        - **Styling:** `src/static/styles.css`
+        
+        **Feature Implementation Checklist:**
+        - [ ] Design API endpoints if needed
+        - [ ] Update database schema/collections if needed
+        - [ ] Implement backend logic
+        - [ ] Create/update frontend components
+        - [ ] Add appropriate error handling
+        - [ ] Update authentication/authorization if needed
+        - [ ] Add proper validation
+        - [ ] Test with different user roles
+        - [ ] Update documentation
+        
+        **Testing Requirements:**
+        - Test feature with different user types (students, teachers, admins)
+        - Test edge cases and error conditions
+        - Verify feature doesn't break existing functionality
+        - Test responsive design on different screen sizes
+        - Performance testing if feature impacts load times
+        
+        **Acceptance Criteria:**
+        - ✅ Feature works as described in the use cases
+        - ✅ Feature is intuitive and user-friendly
+        - ✅ Proper error handling and validation
+        - ✅ Feature respects user permissions and roles
+        - ✅ No negative impact on existing functionality
+        - ✅ Feature is accessible and responsive
+        - ✅ Performance meets acceptable standards

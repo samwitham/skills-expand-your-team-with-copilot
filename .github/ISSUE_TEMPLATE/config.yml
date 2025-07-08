@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: High School Activities Management Documentation
+    url: https://github.com/samwitham/skills-expand-your-team-with-copilot/blob/main/src/README.md
+    about: View the project documentation and development guide
+  - name: General Questions
+    url: https://github.com/samwitham/skills-expand-your-team-with-copilot/discussions
+    about: Ask questions and discuss ideas with the community

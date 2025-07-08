@@ -1,0 +1,142 @@
+name: 👥 User Management Request
+description: Request changes to teacher accounts, permissions, or user management
+title: "[USER MGMT] "
+labels: ["user-management", "teacher-request", "admin"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Request changes to user accounts, permissions, or user management features. Please provide all necessary details for account security.
+        
+  - type: dropdown
+    id: request-type
+    attributes:
+      label: Type of Request
+      description: What type of user management change do you need?
+      options:
+        - Add new teacher account
+        - Modify existing teacher account
+        - Remove teacher account
+        - Reset teacher password
+        - Change teacher permissions/role
+        - Update teacher display name
+        - Other user management task
+    validations:
+      required: true
+      
+  - type: input
+    id: teacher-username
+    attributes:
+      label: Teacher Username
+      description: Username for the teacher account (new or existing)
+      placeholder: e.g., jsmith, amartinez, etc.
+    validations:
+      required: true
+      
+  - type: input
+    id: teacher-display-name
+    attributes:
+      label: Teacher Display Name
+      description: Full display name for the teacher
+      placeholder: e.g., Ms. Smith, Mr. Martinez, Dr. Johnson
+    validations:
+      required: false
+      
+  - type: dropdown
+    id: teacher-role
+    attributes:
+      label: Teacher Role/Permission Level
+      description: What role should this teacher have?
+      options:
+        - teacher (standard teacher permissions)
+        - admin (administrative permissions)
+        - Not applicable
+    validations:
+      required: false
+      
+  - type: input
+    id: temp-password
+    attributes:
+      label: Temporary Password (for new accounts)
+      description: Initial password for new teacher accounts (they should change it after first login)
+      placeholder: Enter a secure temporary password
+    validations:
+      required: false
+      
+  - type: textarea
+    id: request-reason
+    attributes:
+      label: Reason for Request
+      description: Why is this change needed?
+      placeholder: e.g., "New teacher hired", "Teacher left the school", "Role change needed"
+    validations:
+      required: true
+      
+  - type: textarea
+    id: additional-details
+    attributes:
+      label: Additional Details
+      description: Any other relevant information?
+      placeholder: Special requirements, effective date, etc.
+    validations:
+      required: false
+      
+  - type: checkboxes
+    id: confirmation
+    attributes:
+      label: Confirmation
+      description: Please confirm the following
+      options:
+        - label: I have verified this request is authorized
+          required: true
+        - label: I understand password changes require the affected teacher to be notified
+          required: false
+        - label: I confirm the username doesn't conflict with existing accounts (for new accounts)
+          required: false
+    validations:
+      required: true
+      
+  - type: markdown
+    attributes:
+      value: |
+        ## Implementation Details for Developer
+        
+        **Database Changes Needed:**
+        - Modify `initial_teachers` array in `src/backend/database.py`
+        - For new accounts: Add new teacher object with username, display_name, hashed password, role
+        - For modifications: Update existing teacher object fields
+        - For deletions: Remove teacher object (consider data cleanup)
+        
+        **Security Considerations:**
+        - Always hash passwords using the `hash_password()` function
+        - Verify username uniqueness for new accounts
+        - Consider impact on existing activity registrations
+        - Ensure proper role-based access control
+        
+        **Files to Modify:**
+        - `src/backend/database.py` - Update initial_teachers array
+        - Check `src/backend/routers/auth.py` if role-based features are affected
+        - Review `src/backend/routers/activities.py` for permission checks
+        
+        **Testing Requirements:**
+        - Test login with new/modified credentials
+        - Verify role permissions work correctly
+        - Test teacher authentication in activity management
+        - Ensure removed accounts cannot access the system
+        - Check that existing data integrity is maintained
+        
+        **Important Notes:**
+        - Password changes require secure communication to affected teachers
+        - Consider backup/recovery procedures for account changes
+        - Verify no orphaned data when removing accounts
+        - Document any role-based feature differences
+        
+        **Acceptance Criteria:**
+        - ✅ Account changes are implemented as requested
+        - ✅ Authentication works correctly with new/modified credentials
+        - ✅ Role permissions are properly enforced
+        - ✅ No security vulnerabilities introduced
+        - ✅ Existing system functionality remains intact
+        - ✅ No data loss or corruption
+        - ✅ Appropriate error handling for edge cases
